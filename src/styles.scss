@@ -1,0 +1,10 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+$primary: #40416B;
+$secondary: #5E5426;
+$danger: #d8160c;
+$white: #DFDFF7;
+$theme-colors: ( "primary": $primary, "danger": $danger, "secondary": $secondary, "white": $white);
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+// Then add additional custom code here
