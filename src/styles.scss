@@ -8,7 +8,8 @@ $success: #5EAB7A;
 $warning: #E99700;
 $black: #333333;
 $dark: #6B6B6B;
-$theme-colors: ( "primary": $primary, "danger": $danger, "secondary": $secondary, "white": $white, "success": $success, "warning": $warning, "black": $black, "dark": $dark);
+$ligth: #ffffff;
+$theme-colors: ( "primary": $primary, "danger": $danger, "secondary": $secondary, "white": $white, "success": $success, "warning": $warning, "black": $black, "dark": $dark, "ligth":$ligth);
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 // Then add additional custom code here
