@@ -7,3 +7,25 @@
     width: 3rem;
     height: 3rem;
 }
+
+.btn-circle,
+.btn-login {
+    -webkit-box-shadow: 5px 5px 6px 0px #333333;
+    box-shadow: 5px 5px 6px 0px #333333;
+}
+
+.perfil-img {
+    position: absolute;
+    top: -4rem;
+    -webkit-box-shadow: 5px 5px 6px 0px #333333;
+    box-shadow: 5px 5px 6px 0px #333333;
+    left: calc(2rem + 4vw);
+    max-width: 8rem;
+    max-height: 8rem;
+}
+
+@media screen and (max-width: 992px) {
+    .perfil-img {
+        left: 50%;
+    }
+}

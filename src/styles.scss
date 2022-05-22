@@ -2,9 +2,13 @@
 // Option A: Include all of Bootstrap
 $primary: #40416B;
 $secondary: #5E5426;
-$danger: #d8160c;
+$danger: #AB7A78;
 $white: #DFDFF7;
-$theme-colors: ( "primary": $primary, "danger": $danger, "secondary": $secondary, "white": $white);
+$success: #5EAB7A;
+$warning: #E99700;
+$black: #333333;
+$dark: #6B6B6B;
+$theme-colors: ( "primary": $primary, "danger": $danger, "secondary": $secondary, "white": $white, "success": $success, "warning": $warning, "black": $black, "dark": $dark);
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 // Then add additional custom code here
