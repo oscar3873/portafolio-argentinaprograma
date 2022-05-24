@@ -18,7 +18,6 @@ export class TerminalComponent implements OnInit {
   async init () {
 
     await this.dormir(1000);
-    await this.escribir("Hola, ");
 
     while(true){
       await this.escribir("Me llamo Oscar Vargas");
@@ -48,8 +47,8 @@ export class TerminalComponent implements OnInit {
   }
 
   private typeInterval (): number {
-    const randomMs = 100 * Math.random();
-    return randomMs < 50 ? 30 : randomMs;
+    const randomMs = 150 * Math.random();
+    return randomMs < 50 ? 10 : randomMs;
   }
   
 

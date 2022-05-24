@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,6 +10,7 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { DonutChartComponent } from './components/donut-chart/donut-chart.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { SkillsComponent } from './components/skills/skills.component';
     ExperienciaComponent,
     ProyectosComponent,
     EducacionComponent,
-    SkillsComponent
+    SkillsComponent,
+    DonutChartComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

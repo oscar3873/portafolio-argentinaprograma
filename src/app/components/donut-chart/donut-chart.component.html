@@ -1,0 +1,22 @@
+<section class="container-fluid d-flex justify-content-center text-center">
+    <div class="card-group chart-wrapper mb-3">
+        <div class="row row-cols-lg-4 row-cols-md-2 justify-content-center">
+            <div *ngFor="let donutChartData of data" class="col" style="max-width: 240px;">
+                <div class="card-header border-0">
+                    <div class="card-title">Skill</div>
+                </div>
+                <div class="card bg-primary border-0 position-relative">
+                    <div>
+                        <span class="fw-bolder fs-4 position-absolute top-50 start-50 translate-middle">1</span>
+                    </div>
+                    <div class="card-body">
+                        <canvas baseChart [type]="doughnut" [data]="donutChartData">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 // Custom.scss
 // Option A: Include all of Bootstrap
+$font-family-base:'Montserrat',
+sans-serif;
 $primary: #40416B;
 $secondary: #5E5426;
 $danger: #AB7A78;
@@ -9,11 +13,23 @@ $warning: #E99700;
 $black: #333333;
 $dark: #6B6B6B;
 $ligth: #ffffff;
-$box-shadow: 0 .5rem 1rem rgba(#222238, .15);
-$box-shadow-sm: 0 .125rem .25rem rgba(#222238, .075);
-$box-shadow-lg: 0 1rem 3rem rgba(#222238, .175);
-$box-shadow-inset: inset 0 1px 2px rgba(#222238, .075);
-$theme-colors: ( "primary": $primary, "danger": $danger, "secondary": $secondary, "white": $white, "success": $success, "warning": $warning, "black": $black, "dark": $dark, "ligth":$ligth);
+$box-shadow: 0 .5rem 1rem rgba(#222238,
+.15);
+$box-shadow-sm: 0 .125rem .25rem rgba(#222238,
+.075);
+$box-shadow-lg: 0 1rem 3rem rgba(#222238,
+.175);
+$box-shadow-inset: inset 0 1px 2px rgba(#222238,
+.075);
+$theme-colors: ( "primary": $primary,
+"danger": $danger,
+"secondary": $secondary,
+"white": $white,
+"success": $success,
+"warning": $warning,
+"black": $black,
+"dark": $dark,
+"ligth":$ligth);
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 // Then add additional custom code here
