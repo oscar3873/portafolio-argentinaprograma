@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-educacion',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./educacion.component.scss']
 })
 export class EducacionComponent implements OnInit {
-  cards:String[] =["Car1","Card2","Card3","Card4"];
-  constructor() { }
+  educacion:any[] =[];
+  @Input() onSession!: boolean;
+  constructor(private portfolioServ:PortfolioService) { }
 
   ngOnInit(): void {
+    this.portfolioServ.obtenerDatosEducacion()
+    .subscribe((data)=>{
+      this.educacion = data;
+      console.log(data);
+    })
   }
 
 }

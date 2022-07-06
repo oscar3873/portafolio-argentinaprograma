@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-terminal',
@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TerminalComponent implements OnInit {
 
   text:string = "";
-
+  @Input() background:any;
+  @Input() onSession:boolean | undefined;
   constructor() { }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class TerminalComponent implements OnInit {
       await this.escribir("Me llamo Oscar Vargas");
       await this.dormir(2000);
       await this.borrar();
-      await this.escribir("Y soy Desarrollador FullStack JR.");
+      await this.escribir("Soy Desarrollador FullStack JR.");
       await this.dormir(2000);
       await this.borrar();
     }

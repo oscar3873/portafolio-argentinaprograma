@@ -11,6 +11,14 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { DonutChartComponent } from './components/donut-chart/donut-chart.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor.service';
+import { PortfolioService } from './services/portfolio.service';
 
 @NgModule({
   declarations: [
@@ -22,13 +30,20 @@ import { DonutChartComponent } from './components/donut-chart/donut-chart.compon
     ProyectosComponent,
     EducacionComponent,
     SkillsComponent,
-    DonutChartComponent
+    DonutChartComponent,
+    PortfolioComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
-    NgChartsModule
+    NgChartsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PortfolioService,
+    {provide: APP_BASE_HREF, useValue: ''},
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
