@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartDataset, ChartType, Plugin } from 'chart.js';
+import { Component, Input, OnInit } from '@angular/core';
+import { ChartData, ChartType } from 'chart.js';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-donut-chart',
@@ -8,61 +9,52 @@ import { ChartData, ChartDataset, ChartType, Plugin } from 'chart.js';
 })
 export class DonutChartComponent implements OnInit {
 
+  skills:any[] =[];
   doughnut:ChartType = "doughnut";
+  data:ChartData[] = [];
+  imgUrls:String[] = [];
 
-  data:ChartData[] = [{
-    datasets: [{
-        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        backgroundColor: "#9496F7",
-        borderColor:"#40416B",
-    }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-},{
-  datasets: [{
-      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      backgroundColor: "#9496F7",
-      borderColor:"#40416B",
-  }],
-}]
+  @Input() onSession!: boolean;
 
-  constructor() { }
+  constructor(private portfolioServ:PortfolioService) { }
 
   ngOnInit(): void {
+    this.portfolioServ.obtenerDatosSkill()
+    .subscribe((data)=>{
+      this.skills = data;
+      console.log(data);
+      this.skills.forEach((element) => {
+        this.data.push(
+          {
+            datasets: [{
+                label: element.lenguajeProgramacion,
+                data: [
+                  element.anioExp, element.anioExp, element.anioExp, element.anioExp, element.anioExp,
+                  element.anioExp, element.anioExp, element.anioExp, element.anioExp, element.anioExp
+                ],
+                backgroundColor:()=>{
+                  
+                  let colores:any = [];
+                  for (let count = 0; count < 10; count++) {
+                    if(count < element.anioExp){
+                      colores.push("#DFDFF7");
+                    }else{
+                      colores.push("#9496F7")
+                    }
+                    
+                  }
+                  return colores;
+                }
+                ,
+                borderColor:"#40416B",
+            }],
+          }
+        )
+
+        this.imgUrls.push(element.url);
+
+      });
+    });
   }
 
 }

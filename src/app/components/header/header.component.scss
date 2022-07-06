@@ -8,18 +8,33 @@
     height: 3rem;
 }
 
+.btn-circle2 {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
 .btn-circle,
 .btn-login {
     -webkit-box-shadow: 5px 5px 6px 0px #333333;
     box-shadow: 5px 5px 6px 0px #333333;
 }
 
+.position {
+    position: relative;
+    top: -7rem;
+}
+
 .perfil-img {
-    position: absolute;
-    top: -4rem;
+    //position: absolute;
+    //top: -4rem;
     -webkit-box-shadow: 5px 5px 6px 0px #333333;
     box-shadow: 5px 5px 6px 0px #333333;
-    left: calc(2rem + 4vw);
+    //left: calc(3.6rem + 4vw);
     max-width: 8rem;
     max-height: 8rem;
 }

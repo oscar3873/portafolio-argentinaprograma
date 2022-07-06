@@ -1,4 +1,4 @@
-<header class="p-1 bg-primary container-fluid fw-lighter">
+<header class="p-1 bg-primary container-fluid fw-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid d-lg-flex flex-lg-nowrap justify-content-lg-between">
             <a href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa" class="d-flex align-items-center mb-2 mb-lg-0 text-white t-w-h text-decoration-none" target="_blank">
@@ -13,19 +13,46 @@
                     <li class="nav-item"><a href="#" class="nav-link text-white t-w-h py-2 px-0 px-lg-3 fs-5"><i class="bi bi-linkedin"></i></a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white t-w-h py-2 px-0 px-lg-3 fs-5"><i class="bi bi-youtube"></i></a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white t-w-h py-2 px-0 px-lg-3 fs-5"><i class="bi bi-github"></i></a></li>
-                    <div type="button" class="btn user-select-none btn-secondary btn-login rounded-pill mx-4 text-center" style="width: 5rem;"><span class="px-2 text-white t-w-h">Login</span></div>
+                    <div *ngIf="!onSession">
+                        <button routerLink="/login" type="button" class="btn user-select-none btn-secondary btn-login rounded-pill mx-4 text-center" style="width: 5rem;">Login</button>
+                    </div>
+                    <div *ngIf="onSession">
+                        <button (click)="logout()" type="button" class="btn user-select-none btn-danger btn-login rounded-pill mx-4 text-center" style="width: 5rem;"><span class="text-white t-w-h">Logout</span></button>
+                    </div>
                 </ul>
             </div>
         </div>
     </nav>
-    <app-terminal></app-terminal>
-    <div class="d-lg-flex justify-content-lg-around text-white text-center">
-        <div class="m-4 px-2 pt-4 position-relative ">
-            <img class="rounded-circle perfil-img translate-middle " src="../../../assets/1625796078108.jpg" alt="foto-perfil">
-            <span>Oscar Vargas <br> Fullstack Developer JR</span>
+    <app-terminal [onSession]="onSession" [background]="miPortafolio.ftoPortada"></app-terminal>
+    <div class="d-lg-flex justify-content-lg-around align-items-center text-white text-center position">
+        <div class="m-4 px-2 pt-4 ">
+            <img class="rounded-circle perfil-img " src={{miPortafolio.ftoPerfil}} alt="foto-perfil">
+            <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
+                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+            </div>
+            <div>
+                <div>{{miPortafolio.nombre}}</div>
+                <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+                </div>
+            </div>
+            <div>
+                <div>{{miPortafolio.titulo}}</div>
+                <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+                </div>
+            </div>
+
         </div>
         <div class="mt-lg-4 px-2 pt-lg-4">
-            <span>Soy un programador <br> motivado por el balance entre diseño y funcionalidad</span>
+            <div><span>{{miPortafolio.infoPersona}}</span></div>
+            <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
+                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+            </div>
         </div>
     </div>
 </header>

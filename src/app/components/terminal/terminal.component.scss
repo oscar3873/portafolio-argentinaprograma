@@ -57,3 +57,24 @@
         width: 100%;
     }
 }
+
+.btn-circle2 {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.position {
+    position: relative;
+    top: 4rem;
+    z-index: 9999999;
+}
+
+.btn-login {
+    -webkit-box-shadow: 5px 5px 6px 0px #333333;
+    box-shadow: 5px 5px 6px 0px #333333;
+}

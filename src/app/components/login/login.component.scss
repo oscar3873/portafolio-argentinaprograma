@@ -1,0 +1,16 @@
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form {
+    width: 450px;
+}
+
+.btn-circle,
+.btn-login {
+    -webkit-box-shadow: 5px 5px 6px 0px #333333;
+    box-shadow: 5px 5px 6px 0px #333333;
+}

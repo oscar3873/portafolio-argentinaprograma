@@ -1,17 +1,29 @@
 <section class="container-fluid d-flex justify-content-center text-center">
     <div class="card-group chart-wrapper mb-3">
         <div class="row row-cols-lg-4 row-cols-md-2 justify-content-center">
-            <div *ngFor="let donutChartData of data" class="col" style="max-width: 240px;">
-                <div class="card-header border-0">
-                    <div class="card-title">Skill</div>
+            <div *ngFor="let donutChartData of data; ; let i = index" class="col" style="max-width: 240px;">
+                <div class="card-header text-center pb-0 m-0 border-0">
+                    <div class="card-title">{{donutChartData.datasets[0].label}}</div>
                 </div>
                 <div class="card bg-primary border-0 position-relative">
                     <div>
-                        <span class="fw-bolder fs-4 position-absolute top-50 start-50 translate-middle">1</span>
+                        <span class="fw-bolder fs-4 position-absolute top-50 start-50 translate-middle">
+                            <img class="rounded-circle perfil-img translate-middle " src={{imgUrls[i]}} alt="">
+                        </span>
                     </div>
-                    <div class="card-body">
-                        <canvas baseChart [type]="doughnut" [data]="donutChartData">
+                    <div class="card-body pt-0 user-select-none">
+                        <canvas class="user-select-none" baseChart [type]="doughnut" [data]="donutChartData">
                         </canvas>
+                    </div>
+                    <div>
+                        <p>{{donutChartData.datasets[0].data[0]}}</p>
+                        <p>años de experiencia</p>
+                    </div>
+                </div>
+                <div class="">
+                    <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                        <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
+                        <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
                     </div>
                 </div>
             </div>
