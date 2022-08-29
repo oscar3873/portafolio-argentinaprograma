@@ -28,20 +28,22 @@
         <div class="m-4 px-2 pt-4 ">
             <img class="rounded-circle perfil-img " src={{miPortafolio.ftoPerfil}} alt="foto-perfil">
             <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
                 <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+
             </div>
             <div>
                 <div>{{miPortafolio.nombre}}</div>
                 <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
-                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="modalService.openModal()"><i class="bi bi-pencil-square"></i></div>
+                    <div *ngIf="modalService.modalSwitch == true">
+                        <app-modal [valor]="miPortafolio.nombre" [modalController]="modalService"></app-modal>
+                    </div>
                 </div>
             </div>
             <div>
                 <div>{{miPortafolio.titulo}}</div>
                 <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
+
                     <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
                 </div>
             </div>
@@ -50,7 +52,6 @@
         <div class="mt-lg-4 px-2 pt-lg-4">
             <div><span>{{miPortafolio.infoPersona}}</span></div>
             <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
                 <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
             </div>
         </div>
