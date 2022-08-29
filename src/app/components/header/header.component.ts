@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { ModalService } from 'src/app/services/modal.service'
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Input() onSession!: boolean;
   miPortafolio:any;
 
-  constructor(private portfolioServ:PortfolioService) { }
+  constructor(private portfolioServ:PortfolioService, public modalService:ModalService) { }
 
   ngOnInit(): void {
     

@@ -1,0 +1,15 @@
+.modal-shadow {
+    -webkit-box-shadow: 5px 5px 6px 5px #333333;
+    box-shadow: 5px 5px 6px 5px #333333;
+    z-index: 999999999999999;
+}
+
+.modal-btn {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}

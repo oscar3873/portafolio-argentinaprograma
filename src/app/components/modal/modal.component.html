@@ -1,0 +1,21 @@
+<div class="position-absolute rounded d-flex justify-content-center align-items-center modal-shadow m-2 bg-primary" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="dialog p-3" role="document">
+        <div class="content">
+            <div class="header m-2">
+                <h5 class="title"></h5>
+            </div>
+            <div class="body m-2">
+                <form>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Modificar</label>
+                        <input type="text" class="form-control" value="{{valor}}" id="recipient-text">
+                    </div>
+                </form>
+            </div>
+            <div class="footer m-2">
+                <button type="button" class="btn btn-secondary m-2" (click)="modalController.closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary m-2 btn-danger text-white">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
