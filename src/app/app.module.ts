@@ -20,7 +20,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { PortfolioService } from './services/portfolio.service';
 import { ModalComponent } from './components/modal/modal.component';
-import { ModalService } from './services/modal.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,7 @@ import { ModalService } from './services/modal.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ModalService ,PortfolioService,
+  providers: [PortfolioService,
     {provide: APP_BASE_HREF, useValue: ''},
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
   bootstrap: [AppComponent]
