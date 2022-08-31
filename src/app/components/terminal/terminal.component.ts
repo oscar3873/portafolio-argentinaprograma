@@ -10,6 +10,7 @@ export class TerminalComponent implements OnInit {
   text:string = "";
   @Input() background:any;
   @Input() onSession:boolean | undefined;
+  @Input() modal!:boolean;
   constructor() { }
 
   ngOnInit(): void {
@@ -52,5 +53,11 @@ export class TerminalComponent implements OnInit {
     return randomMs < 50 ? 10 : randomMs;
   }
   
+  openModal(){
+    this.modal = true
+  }
+  closeModal(){
+    this.modal = false
+  }
 
 }

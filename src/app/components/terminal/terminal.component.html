@@ -7,7 +7,30 @@
         </div>
         <div *ngIf="onSession" class="d-flex justify-content-center align-items-center m-0 position">
             <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
-            <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+            <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal()"><i class="bi bi-pencil-square"></i></div>
+            <!--Editar Nombre-->
+            <div *ngIf="modal == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
+                <div class="dialog p-3" role="document">
+                    <div class="content">
+                        <div class="header m-2">
+                            <h5 class="title"></h5>
+                        </div>
+                        <div class="body m-2">
+                            <form>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label"></label>
+                                    <input type="text" class="form-control" id="recipient-text">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="footer m-2">
+                            <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
+                            <button type="button" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Fin Nombre-->
         </div>
         <div class="terminal-img mx-auto"><img class="img-fluid" width="2500px" height="auto" src={{background}} alt=""></div>
 
