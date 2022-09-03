@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   modalOption = [false, false, false, false, false]
   id!: number; 
 
-  public formGroup: FormGroup;
+  formGroup: FormGroup;
 
   constructor(private portfolioServ:PortfolioService, private formBuilder: FormBuilder) {
     this.formGroup = this.formBuilder.group({

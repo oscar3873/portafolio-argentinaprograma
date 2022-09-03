@@ -1,4 +1,5 @@
 <h4>Proyectos</h4>
+<button *ngIf="onSession" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</button>
 <section class="container-fluid d-flex justify-content-center text-start fw-light">
     <div class="card mb-3 bg-primary border-0" style="max-width: 940px;">
         <div *ngFor="let p of proyectos" class="row g-0 m-4">

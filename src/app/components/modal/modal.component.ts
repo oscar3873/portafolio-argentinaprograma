@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms'; 
 
 @Component({
   selector: 'app-modal',
@@ -7,12 +8,33 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() modalController:any
   @Input() valor:any
+  @Input() info:any
+  @Output() switch = new EventEmitter()
+  @Output() infoModal= new EventEmitter()
+  formGroup!: FormGroup
+  claveID = "id"
 
-  constructor() { }
+  constructor(private formBuilder:FormBuilder) {
+  }
 
   ngOnInit(): void {
+    this.formGroup = this.formBuilder.group(this.info[0])
+    for(let key in this.info[0]){
+      this.formGroup.reset(key)
+    }
+  }
+
+  onSubmit(data:any){
+    this.sendModal(data)
+  }
+
+  closeModal(){
+    this.switch.emit(false)
+  }
+
+  sendModal(data:any){
+    this.infoModal.emit(data)
   }
 
 }
