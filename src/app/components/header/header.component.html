@@ -23,124 +23,127 @@
             </div>
         </div>
     </nav>
-    <app-terminal [onSession]="onSession" [background]="miPortafolio.ftoPortada" [modal]="modalOption[0]"></app-terminal>
-    <div class="d-lg-flex justify-content-lg-around align-items-center text-white text-center">
-        <div class="m-4 px-2 pt-4 ">
-            <img class="rounded-circle perfil-img " src={{miPortafolio.ftoPerfil}} alt="foto-perfil">
-            <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal1()"><i class="bi bi-pencil-square"></i></div>
-                <!--Editar Foto-->
-                <div id="1" *ngIf="modalOption[1] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
-                    <div class="dialog p-3" role="document">
-                        <div class="content">
-                            <div class="header m-2">
-                                <h5 class="title"></h5>
-                            </div>
-                            <div class="body m-2">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label"></label>
-                                        <input type="text" class="form-control" value="{{miPortafolio.nombre}}" id="recipient-text">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="footer m-2">
-                                <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
-                                <button type="button" class="btn btn-primary m-2 btn-danger text-white" (click)="editar()">Actualizar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Fin Foto-->
-            </div>
-            <div>
-                <div>{{miPortafolio.nombre}}</div>
-                <div id="2" *ngIf="onSession" class="d-flex row  justify-content-center align-content-center ">
-                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal2()"><i class="bi bi-pencil-square"></i></div>
-                    <!--Editar Nombre-->
-                    <div *ngIf="modalOption[2] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+        <app-terminal [onSession]="onSession" [background]="miPortafolio.ftoPortada" [modal]="modalOption[0]"></app-terminal>
+        <div class="d-lg-flex justify-content-lg-around align-items-center text-white text-center">
+            <div class="m-4 px-2 pt-4 ">
+                <img class="rounded-circle perfil-img " src={{miPortafolio.ftoPerfil}} alt="foto-perfil">
+                <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal1()"><i class="bi bi-pencil-square"></i></div>
+                    <!--Editar Foto-->
+                    <div id="1" *ngIf="modalOption[1] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
                         <div class="dialog p-3" role="document">
                             <div class="content">
                                 <div class="header m-2">
                                     <h5 class="title"></h5>
                                 </div>
                                 <div class="body m-2">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label"></label>
-                                            <input type="text" class="form-control" value="{{miPortafolio.nombre}}" id="recipient-text">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="footer m-2">
-                                    <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
-                                    <button type="button" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Fin Nombre-->
-                </div>
-            </div>
-            <div>
-                <div>{{miPortafolio.titulo}}</div>
-                <div id="3" *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal3()"><i class="bi bi-pencil-square"></i></div>
-                    <!--Editar Titulo-->
-                    <div *ngIf="modalOption[3] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
-                        <div class="dialog p-3" role="document">
-                            <div class="content">
-                                <div class="header m-2">
-                                    <h5 class="title"></h5>
-                                </div>
-                                <div class="body m-2">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label"></label>
-                                            <input type="text" class="form-control" value="{{miPortafolio.titulo}}" id="recipient-text">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="footer m-2">
-                                    <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
-                                    <button type="button" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Fin Titulo-->
-                </div>
-            </div>
 
-        </div>
-        <div class="mt-lg-4 px-2 pt-lg-4">
-            <div><span>{{miPortafolio.infoPersona}}</span></div>
-            <div id="4" *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal4()"><i class="bi bi-pencil-square"></i></div>
-                <!--Editar Info-->
-                <div *ngIf="modalOption[4] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
-                    <div class="dialog p-3" role="document">
-                        <div class="content">
-                            <div class="header m-2">
-                                <h5 class="title"></h5>
-                            </div>
-                            <div class="body m-2">
-                                <form>
                                     <div class="form-group">
-                                        <label for="message-text" class="col-form-label"></label>
-                                        <textarea rows="10" cols="50" type="text" class="form-control" value="{{miPortafolio.infoPersona}}" id="recipient-text"></textarea>
+                                        <label for="message-text" class="col-form-label">Modificar</label>
+                                        <input type="text" class="form-control" value="" id="ftoPerfil" formControlName="ftoPerfil">
                                     </div>
-                                </form>
-                            </div>
-                            <div class="footer m-2">
-                                <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
-                                <button type="button" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
+
+                                </div>
+                                <div class="footer m-2">
+                                    <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!--Fin Foto-->
                 </div>
-                <!--Fin Info-->
+                <div>
+                    <div>{{miPortafolio.nombre}}</div>
+                    <div id="2" *ngIf="onSession" class="d-flex row  justify-content-center align-content-center ">
+                        <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal2()"><i class="bi bi-pencil-square"></i></div>
+                        <!--Editar Nombre-->
+                        <div *ngIf="modalOption[2] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
+                            <div class="dialog p-3" role="document">
+                                <div class="content">
+                                    <div class="header m-2">
+                                        <h5 class="title"></h5>
+                                    </div>
+                                    <div class="body m-2">
+
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Modificar</label>
+                                            <input id="nombre" formControlName="nombre" type="text" class="form-control" value="{{miPortafolio.nombre}}">
+                                        </div>
+
+                                    </div>
+                                    <div class="footer m-2">
+                                        <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin Nombre-->
+                    </div>
+                </div>
+                <div>
+                    <div>{{miPortafolio.titulo}}</div>
+                    <div id="3" *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                        <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal3()"><i class="bi bi-pencil-square"></i></div>
+                        <!--Editar Titulo-->
+                        <div *ngIf="modalOption[3] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
+                            <div class="dialog p-3" role="document">
+                                <div class="content">
+
+                                    <div class="header m-2">
+                                        <h5 class="title"></h5>
+                                    </div>
+                                    <div class="body m-2">
+
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Modificar</label>
+                                            <input id="titulo" formControlName="titulo" type="text" class="form-control" value="{{miPortafolio.titulo}}" id="recipient-text">
+                                        </div>
+
+                                    </div>
+                                    <div class="footer m-2">
+                                        <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin Titulo-->
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-lg-4 px-2 pt-lg-4">
+                <div><span>{{miPortafolio.infoPersona}}</span></div>
+                <div id="4" *ngIf="onSession" class="d-flex justify-content-center align-items-center">
+                    <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none" (click)="openModal4()"><i class="bi bi-pencil-square"></i></div>
+                    <!--Editar Info-->
+                    <div *ngIf="modalOption[4] == true" class="modal-shadow bg-primary abs-center mx-auto my-2">
+                        <div class="dialog p-3" role="document">
+                            <div class="content">
+                                <div class="header m-2">
+                                    <h5 class="title"></h5>
+                                </div>
+                                <div class="body m-2">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Modificar</label>
+                                            <textarea rows="10" cols="50" type="text" class="form-control" value="{{miPortafolio.infoPersona}}" id="infoPersona" formControlName="infoPersona"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="footer m-2">
+                                    <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary m-2 btn-danger text-white">Actualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Fin Info-->
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </header>
