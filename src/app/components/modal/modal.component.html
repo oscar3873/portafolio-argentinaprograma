@@ -7,15 +7,22 @@
                 </div>
                 <div *ngFor="let i of info[0] | keyvalue" class="body m-2">
 
-                    <div class="form-group">
+                    <div *ngIf="!editMode" class="form-group">
                         <label *ngIf="i.key != claveID" for="message-text" class="col-form-label">{{i.key}}</label>
                         <input *ngIf="i.key != claveID" id="{{i.key}}" formControlName="{{i.key}}" placeholder="{{i.value}}" type="text" class="form-control text-center" value="">
                     </div>
 
+                    <div *ngIf="editMode" class="form-group">
+                        <label *ngIf="i.key != claveID" for="message-text" class="col-form-label">{{i.key}}</label>
+                        <input *ngIf="i.key != claveID" id="{{i.key}}" formControlName="{{i.key}}" placeholder="" type="text" class="form-control text-center">
+                    </div>
+
                 </div>
                 <div class="footer m-2">
-                    <button type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
-                    <button type="submit" class="btn btn-primary m-2 btn-success text-white">Añadir</button>
+                    <button *ngIf="!editMode" type="button" class="btn btn-secondary m-2" (click)="closeModal()">Cancelar</button>
+                    <button *ngIf="editMode" type="button" class="btn btn-secondary m-2" (click)="closeEditMode()">Cancelar</button>
+                    <button *ngIf="!editMode" type="submit" class="btn btn-primary m-2 btn-success text-white">Añadir</button>
+                    <button *ngIf="editMode" type="submit" class="btn btn-primary m-2 btn-success text-white">Modificar</button>
                 </div>
             </div>
         </form>

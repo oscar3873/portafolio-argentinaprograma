@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
       titulo: '',
       infoPersona:'',
       ftoPerfil:''
-
     });
    }
 
@@ -75,7 +74,9 @@ export class HeaderComponent implements OnInit {
 
   editar(data:any){
     this.portfolioServ.modificarDatosPersona(this.id,
-      data).subscribe()
+      data).subscribe((d)=>{
+        console.log(d)
+      })
   }
   
 }
