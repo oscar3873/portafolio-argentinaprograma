@@ -18,7 +18,7 @@ export class PortfolioService {
   modificarDatosPersona(id:number, persona:any):Observable<any>{
     return this.http.put(`${this.url}persona/${id}`,persona)
   }
-
+  
   //Experiencia
   obtenerDatosExperiencia():Observable<any>{
     return this.http.get(this.url+"experiencia/ver");

@@ -20,6 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { PortfolioService } from './services/portfolio.service';
 import { ModalComponent } from './components/modal/modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ModalComponent } from './components/modal/modal.component';
     NgChartsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [PortfolioService,
     {provide: APP_BASE_HREF, useValue: ''},

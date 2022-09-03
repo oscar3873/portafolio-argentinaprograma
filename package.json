@@ -22,6 +22,7 @@
     "bootstrap-icons": "^1.8.2",
     "chart.js": "^3.7.1",
     "ng2-charts": "^3.0.11",
+    "ngx-bootstrap": "^8.0.0",
     "resolve-url-loader": "^5.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

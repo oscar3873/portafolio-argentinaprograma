@@ -34,3 +34,5 @@ $theme-colors: ( "primary": $primary,
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 // Then add additional custom code here
 //Text-White-Hover
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
