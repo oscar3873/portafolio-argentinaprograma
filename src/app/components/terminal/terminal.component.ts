@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TerminalComponent implements OnInit {
 
   text:string = "";
-  @Input() background:any;
+  @Input() background:any | undefined;
   @Input() onSession:boolean | undefined;
   @Input() modal!:boolean;
   constructor() { }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { PortfolioService } from 'src/app/services/portfolio.service';
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -7,11 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExperienciaComponent implements OnInit {
   @Input() onSession!: boolean;
-  cards:String[] =["Car1","Card2","Card3","Card4"];
+  experiencia:any
 
-  constructor() { }
+  constructor(private portfolioServ:PortfolioService) { }
 
   ngOnInit(): void {
+    this.portfolioServ.obtenerDatosExperiencia()
+    .subscribe((data)=>{
+      this.experiencia = data;
+      console.log(data);
+    })
+
   }
 
 }
