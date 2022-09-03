@@ -8,10 +8,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() valor:any
+  @Input() editMode:any
   @Input() info:any
   @Output() switch = new EventEmitter()
   @Output() infoModal= new EventEmitter()
+  @Output() infoModalEdit = new EventEmitter()
+  @Output() closeEdit = new EventEmitter()
   formGroup!: FormGroup
   claveID = "id"
 
@@ -20,13 +22,23 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group(this.info[0])
-    for(let key in this.info[0]){
-      this.formGroup.reset(key)
-    }
+    if(!this.editMode)
+      for(let key in this.info[0]){
+        this.formGroup.reset(key)
+      }
   }
 
   onSubmit(data:any){
-    this.sendModal(data)
+    
+    if(this.editMode){
+      this.sendEdit(data)
+    }else{
+      this.sendModal(data)
+    }
+  }
+
+  closeEditMode(){
+    this.closeEdit.emit(false)
   }
 
   closeModal(){
@@ -35,6 +47,10 @@ export class ModalComponent implements OnInit {
 
   sendModal(data:any){
     this.infoModal.emit(data)
+  }
+
+  sendEdit(data:any){
+    this.infoModalEdit.emit(data)
   }
 
 }

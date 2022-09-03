@@ -7,16 +7,17 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./educacion.component.scss']
 })
 export class EducacionComponent implements OnInit {
-  educacion:any[] =[];
   @Input() onSession!: boolean;
+  educacion:any
+
   switcher:boolean = false;
+
   constructor(private portfolioServ:PortfolioService) { }
 
   ngOnInit(): void {
     this.portfolioServ.obtenerDatosEducacion()
     .subscribe((data)=>{
       this.educacion = data;
-      console.log(data);
     })
   }
 
@@ -26,6 +27,7 @@ export class EducacionComponent implements OnInit {
 
   crear($event:any){
     this.portfolioServ.crearEducacion($event).subscribe()
+    window.location.reload();
   }
 
   editar(){

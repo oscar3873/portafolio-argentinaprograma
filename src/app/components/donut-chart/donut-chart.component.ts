@@ -9,12 +9,13 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 })
 export class DonutChartComponent implements OnInit {
 
-  skills:any[] =[];
   doughnut:ChartType = "doughnut";
   data:ChartData[] = [];
   imgUrls:String[] = [];
-
   @Input() onSession!: boolean;
+  skills:any;
+
+  switcher:boolean = false;
 
   constructor(private portfolioServ:PortfolioService) { }
 
@@ -22,8 +23,7 @@ export class DonutChartComponent implements OnInit {
     this.portfolioServ.obtenerDatosSkill()
     .subscribe((data)=>{
       this.skills = data;
-      console.log(data);
-      this.skills.forEach((element) => {
+      this.skills.forEach((element:any) => {
         this.data.push(
           {
             datasets: [{
@@ -55,6 +55,22 @@ export class DonutChartComponent implements OnInit {
 
       });
     });
+  }
+
+  switchange($event: any){
+    this.switcher = !this.switcher
+  }
+
+  crear($event:any){
+    this.portfolioServ.crearSkill($event).subscribe()
+  }
+
+  editar(){
+
+  }
+
+  eliminar(){
+
   }
 
 }
