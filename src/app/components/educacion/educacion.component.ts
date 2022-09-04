@@ -11,7 +11,7 @@ export class EducacionComponent implements OnInit {
   educacion:any
 
   switcher:boolean = false;
-  editState:boolean = false;
+  editState:any= [false, null];
 
   constructor(private portfolioServ:PortfolioService) { }
 
@@ -27,11 +27,12 @@ export class EducacionComponent implements OnInit {
   }
 
   closeEditMode(){
-    this.editState = !this.editState
+    this.editState[0] = !(this.editState[0])
   }
 
-  editChange(){
-    this.editState = !this.editState
+  editChange(id:any){
+    this.editState[1] = id
+    this.editState[0] = !(this.editState[0])
   }
 
   crear($event:any){
