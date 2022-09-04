@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -18,7 +19,6 @@ export class ExperienciaComponent implements OnInit {
     this.portfolioServ.obtenerDatosExperiencia()
     .subscribe((data)=>{
       this.experiencia = data;
-
     })
 
   }
@@ -36,12 +36,17 @@ export class ExperienciaComponent implements OnInit {
   }
 
   crear(data:any){
-    this.portfolioServ.crearExperiencia(data).subscribe()
+    this.portfolioServ.crearExperiencia(data).subscribe(()=>{
+      this.portfolioServ.obtenerDatosExperiencia()
+    .subscribe((data)=>{
+      this.experiencia = data;
+
+    }) 
+    })
     this.switchange("crear")
   }
 
   editar(data:any){
-    console.log("entre")
     this.portfolioServ.modificarDatosExperiencia(data.id,data).subscribe(()=>{
 
       this.experiencia = this.experiencia.map((d:any)=>{
@@ -58,7 +63,7 @@ export class ExperienciaComponent implements OnInit {
 
   eliminar(id:any){
     this.portfolioServ.eliminarExperiencia(id).subscribe((data)=>{})
-    this.experiencia = this.experiencia.filter((obj:any)=>{})
+    this.experiencia = this.experiencia.filter((obj: any)=> obj.id != id)
   }
 
 }
