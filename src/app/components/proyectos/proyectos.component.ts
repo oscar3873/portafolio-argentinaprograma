@@ -11,6 +11,7 @@ export class ProyectosComponent implements OnInit {
   proyectos:any;
 
   switcher:boolean = false;
+  editState:boolean = false;
 
   constructor(private portfolioServ:PortfolioService) { }
 
@@ -25,16 +26,41 @@ export class ProyectosComponent implements OnInit {
     this.switcher = !this.switcher
   }
 
+  closeEditMode(){
+    this.editState = !this.editState
+  }
+
+  editChange(){
+    this.editState = !this.editState
+  }
+
   crear($event:any){
-    this.portfolioServ.crearProyecto($event).subscribe()
+    this.portfolioServ.crearProyecto($event)
+    .subscribe(()=>{
+      this.portfolioServ.obtenerDatosProyecto()
+      .subscribe((data)=>{
+        this.proyectos = data
+      })
+    })
+    this.switchange("crear")
   }
 
-  editar(){
+  editar(data:any){
+    this.portfolioServ.modificarDatosProyecto(data.id,data).subscribe(()=>{
 
+      this.proyectos = this.proyectos.map((d:any)=>{
+        if(d.id == data.id){
+          d = data
+        }
+        return d;
+      })
+
+    })
   }
 
-  eliminar(){
-
+  eliminar(id:any){
+    this.portfolioServ.eliminarEducacion(id).subscribe((data)=>{})
+    this.proyectos = this.proyectos.filter((obj: any)=> obj.id != id)
   }
 
 }

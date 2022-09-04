@@ -1,5 +1,5 @@
 <h4>Educacion</h4>
-<button (click)="switchange($event)" *ngIf="onSession" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</button>
+<button (click)="switchange($event)" *ngIf="onSession && !editState" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</button>
 <button (click)="switchange($event)" *ngIf="onSession && editState" class="btn shadow btn-success disabled text-white rounded-pill mx-4 text-center">Añadir</button>
 <div *ngIf="switcher || editState">
     <app-modal [info]="educacion" [editMode]="editState" (closeEdit)="closeEditMode()" (switch)="switchange($event)" (infoModalEdit)="editar($event)" (infoModal)="crear($event)"></app-modal>
