@@ -48,17 +48,13 @@ export class EducacionComponent implements OnInit {
 
   editar(data:any){
     this.portfolioServ.modificarDatosEducacion(data.id,data).subscribe(()=>{
+      this.portfolioServ.obtenerDatosEducacion()
+    .subscribe((data)=>{
+      this.educacion = data;
 
-      this.educacion = this.educacion.map((d:any)=>{
-        if(d.id == data.id){
-          d = data
-        }
-
-        return d;
-
-      })
-
+    }) 
     })
+    this.closeEditMode()
   }
 
   eliminar(id:any){

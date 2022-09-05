@@ -48,15 +48,13 @@ export class ProyectosComponent implements OnInit {
 
   editar(data:any){
     this.portfolioServ.modificarDatosProyecto(data.id,data).subscribe(()=>{
+      this.portfolioServ.obtenerDatosProyecto()
+      .subscribe((data)=>{
+        this.proyectos = data;
 
-      this.proyectos = this.proyectos.map((d:any)=>{
-        if(d.id == data.id){
-          d = data
-        }
-        return d;
-      })
-
+      }) 
     })
+    this.closeEditMode()
   }
 
   eliminar(id:any){
