@@ -49,17 +49,13 @@ export class ExperienciaComponent implements OnInit {
 
   editar(data:any){
     this.portfolioServ.modificarDatosExperiencia(data.id,data).subscribe(()=>{
+      this.portfolioServ.obtenerDatosExperiencia()
+    .subscribe((data)=>{
+      this.experiencia = data;
 
-      this.experiencia = this.experiencia.map((d:any)=>{
-        if(d.id == data.id){
-          d = data
-        }
-
-        return d;
-
-      })
-
+    }) 
     })
+    this.closeEditMode()
   }
 
   eliminar(id:any){

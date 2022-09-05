@@ -121,15 +121,14 @@ export class DonutChartComponent implements OnInit {
   }
 
   editar(data:any){
-    console.log(data)
+
     this.portfolioServ.modificarDatosSkill(data.id,data).subscribe(()=>{
 
-      this.skills = this.skills.map((d:any)=>{
-        if(d.id == data.id){
-          d = data
-        }
-        return d;
-      })
+      this.portfolioServ.obtenerDatosProyecto()
+      .subscribe((data)=>{
+        this.skills = data;
+
+      }) 
 
       let idsNew:any = []
       let imgUrlsNew:any = []
