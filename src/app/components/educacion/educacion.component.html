@@ -1,5 +1,5 @@
 <h4>Educacion</h4>
-<button (click)="switchange($event)" *ngIf="onSession && !editState[0]" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</button>
+<a href="#modal" (click)="switchange($event)" *ngIf="onSession && !editState[0]" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</a>
 <button (click)="switchange($event)" *ngIf="onSession && editState[0]" class="btn shadow btn-success disabled text-white rounded-pill mx-4 text-center">Añadir</button>
 <div *ngIf="switcher || editState[0]">
     <app-modal [info]="educacion" [editMode]="editState" (closeEdit)="closeEditMode()" (switch)="switchange($event)" (infoModalEdit)="editar($event)" (infoModal)="crear($event)"></app-modal>
@@ -24,8 +24,8 @@
             </div>
             <div class="col-2">
                 <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                    <button (click)="eliminar(ed.id)" class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></button>
-                    <button (click)="editChange(ed.id)" class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></button>
+                    <a href="#modal" (click)="eliminar(ed.id)" class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></a>
+                    <a href="#modal" (click)="editChange(ed.id)" class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></a>
                 </div>
             </div>
         </div>
