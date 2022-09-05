@@ -1,6 +1,7 @@
-<button (click)="switchange($event)" *ngIf="onSession" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</button>
-<div *ngIf="switcher">
-    <app-modal [info]="skills" (switch)="switchange($event)" (infoModal)="crear($event)"></app-modal>
+<a href="#modal" (click)="switchange($event)" *ngIf="onSession && !editState[0]" class="btn shadow btn-success text-white rounded-pill mx-4 text-center">Añadir</a>
+<button (click)="switchange($event)" *ngIf="onSession && editState[0]" class="btn shadow btn-success disabled text-white rounded-pill mx-4 text-center">Añadir</button>
+<div *ngIf="switcher || editState[0]">
+    <app-modal [info]="skills" [editMode]="editState" (closeEdit)="closeEditMode()" (switch)="switchange($event)" (infoModalEdit)="editar($event)" (infoModal)="crear($event)"></app-modal>
 </div>
 <section class="container-fluid d-flex justify-content-center text-center">
     <div class="card-group chart-wrapper mb-3">
@@ -26,8 +27,8 @@
                 </div>
                 <div class="">
                     <div *ngIf="onSession" class="d-flex justify-content-center align-items-center">
-                        <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></div>
-                        <div class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></div>
+                        <a href="#modal" (click)="eliminar(ids[i])" class="btn text-white btn-circle2 m-1 text-center px-2 bg-danger btn-login user-select-none"><i class="bi bi-trash"></i></a>
+                        <a href="#modal" (click)="editChange(ids[i])" class="btn text-white btn-circle2 m-1 text-center px-2 bg-success btn-login user-select-none"><i class="bi bi-pencil-square"></i></a>
                     </div>
                 </div>
             </div>

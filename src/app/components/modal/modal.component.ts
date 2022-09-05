@@ -21,16 +21,24 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group(this.info[0])
-    if(!this.editMode)
+
+    if(!this.editMode[0]){
+      this.formGroup = this.formBuilder.group(this.info[0])
       for(let key in this.info[0]){
         this.formGroup.reset(key)
       }
+    }else{
+      let obj = this.info.find((obj:any)=>{
+        if(obj.id == this.editMode[1])
+          return obj
+      })
+      this.formGroup = this.formBuilder.group(obj)
+    }
   }
 
   onSubmit(data:any){
     
-    if(this.editMode){
+    if(this.editMode[0]){
       this.sendEdit(data)
     }else{
       this.sendModal(data)
